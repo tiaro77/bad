@@ -1,0 +1,21 @@
+#Przekierowanie na bezWWW
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www.badhub.net$ [NC]
+RewriteRule ^(.*)$ http://badhub.net/$1 [R=301,L]
+
+RewriteRule ^news/([^/.]+)/?$ art.php?name=$1 [L]
+RewriteRule ^video/([^/.]+)/?$ video.php?name=$1 [L]
+RewriteRule ^videopopular/?$ video/popular.php [L]
+RewriteRule ^videofunny/?$ video/funy.php [L]
+RewriteRule ^r/([^/.]+)/?$ r/index.php?name=$1 [L]
+RewriteRule ^source/([^/.]+)/?$ source/index.php?name=$1 [L]
+RewriteRule ^all/us/([^/.]+)/?$ all/us.php?name=$1 [L]
+RewriteRule ^rss.xml?$ s/pin.php [L]
+RewriteRule ^se/([^/.]+)/?$ s.php?q=$1 [R=301,NC,L]
+
+
+ErrorDocument 404 http://badhub.net
+ErrorDocument 500 http://badhub.net
+ErrorDocument 400 http://badhub.net
+ErrorDocument 403 http://badhub.net
